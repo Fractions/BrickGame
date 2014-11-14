@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 public class Block2Panel extends JPanel{
     
      ImageIcon Image6;
-    double counter = 0;
+    int counter = 0;
     double denominator = 6;
     double answer = 0;
     

@@ -18,8 +18,11 @@ public class BrickGameForm extends javax.swing.JFrame {
     /**
      * Creates new form BrickGameForm
      */
+    int score = 5;
+    
     public BrickGameForm() {
         initComponents();
+        scoreNumberLabel.setText(null);
     }
 
     /**
@@ -34,6 +37,8 @@ public class BrickGameForm extends javax.swing.JFrame {
         block1Panel1 = new brickgame.Block1Panel();
         block2Panel1 = new brickgame.Block2Panel();
         jButton1 = new javax.swing.JButton();
+        scoreLabel = new javax.swing.JLabel();
+        scoreNumberLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,6 +88,10 @@ public class BrickGameForm extends javax.swing.JFrame {
             }
         });
 
+        scoreLabel.setText("Score :");
+
+        scoreNumberLabel.setText("0");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -97,12 +106,21 @@ public class BrickGameForm extends javax.swing.JFrame {
                         .addGap(139, 139, 139))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButton1)
-                        .addGap(61, 61, 61))))
+                        .addGap(61, 61, 61))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(scoreLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(scoreNumberLabel)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(70, 70, 70)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(scoreLabel)
+                    .addComponent(scoreNumberLabel))
+                .addGap(48, 48, 48)
                 .addComponent(block1Panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(82, 82, 82)
                 .addComponent(block2Panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -130,9 +148,14 @@ public class BrickGameForm extends javax.swing.JFrame {
       if(block1Panel1.answer == block2Panel1.answer){
           System.out.println("You got it right!");
           playMath();
+          score++;
+          scoreNumberLabel.setText(""+score);
+          
       }
       else{
           System.out.println("Nerd you got it wrong");
+          score--;
+          scoreNumberLabel.setText(""+score);
       }
     }//GEN-LAST:event_jButton1MouseClicked
 
@@ -174,7 +197,7 @@ public class BrickGameForm extends javax.swing.JFrame {
     }
     public void playMath(){
         try{
-          File file = new File("/Users/brandonturner/Downloads/math.mp3");
+          File file = new File("/resources/math.mp3");
           FileInputStream fis = new FileInputStream(file);
           BufferedInputStream bis = new BufferedInputStream(fis);
           
@@ -197,5 +220,7 @@ public class BrickGameForm extends javax.swing.JFrame {
     private brickgame.Block1Panel block1Panel1;
     private brickgame.Block2Panel block2Panel1;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel scoreLabel;
+    private javax.swing.JLabel scoreNumberLabel;
     // End of variables declaration//GEN-END:variables
 }
