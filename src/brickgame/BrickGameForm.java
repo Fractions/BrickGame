@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package brickgame;
+import java.awt.Color;
 import java.io.*;
 import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.*;
@@ -22,7 +23,7 @@ public class BrickGameForm extends javax.swing.JFrame {
     
     public BrickGameForm() {
         initComponents();
-        scoreNumberLabel.setText(null);
+        scoreNumberLabel.setText(""+score);
     }
 
     /**
@@ -34,22 +35,40 @@ public class BrickGameForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        block1Panel1 = new brickgame.Block1Panel();
-        block2Panel1 = new brickgame.Block2Panel();
-        jButton1 = new javax.swing.JButton();
+        equivalentButton = new javax.swing.JButton();
         scoreLabel = new javax.swing.JLabel();
         scoreNumberLabel = new javax.swing.JLabel();
+        block1Panel1 = new brickgame.Block1Panel();
+        block2Panel1 = new brickgame.Block2Panel();
+        userMessage = new javax.swing.JLabel();
+        nosolutionButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(562, 380));
+        setMinimumSize(new java.awt.Dimension(562, 380));
+        setPreferredSize(new java.awt.Dimension(562, 380));
+        getContentPane().setLayout(null);
+
+        equivalentButton.setText("Equivalent!");
+        equivalentButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                equivalentButtonMouseClicked(evt);
+            }
+        });
+        getContentPane().add(equivalentButton);
+        equivalentButton.setBounds(320, 320, 120, 23);
+
+        scoreLabel.setText("Score :");
+        getContentPane().add(scoreLabel);
+        scoreLabel.setBounds(480, 10, 50, 14);
+
+        scoreNumberLabel.setText("0");
+        getContentPane().add(scoreNumberLabel);
+        scoreNumberLabel.setBounds(523, 11, 50, 14);
 
         block1Panel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 block1Panel1MouseClicked(evt);
-            }
-        });
-        block1Panel1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                block1Panel1KeyPressed(evt);
             }
         });
 
@@ -57,12 +76,15 @@ public class BrickGameForm extends javax.swing.JFrame {
         block1Panel1.setLayout(block1Panel1Layout);
         block1Panel1Layout.setHorizontalGroup(
             block1Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 245, Short.MAX_VALUE)
+            .addGap(0, 250, Short.MAX_VALUE)
         );
         block1Panel1Layout.setVerticalGroup(
             block1Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 53, Short.MAX_VALUE)
+            .addGap(0, 50, Short.MAX_VALUE)
         );
+
+        getContentPane().add(block1Panel1);
+        block1Panel1.setBounds(150, 80, 250, 50);
 
         block2Panel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -74,60 +96,29 @@ public class BrickGameForm extends javax.swing.JFrame {
         block2Panel1.setLayout(block2Panel1Layout);
         block2Panel1Layout.setHorizontalGroup(
             block2Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 251, Short.MAX_VALUE)
+            .addGap(0, 250, Short.MAX_VALUE)
         );
         block2Panel1Layout.setVerticalGroup(
             block2Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 51, Short.MAX_VALUE)
+            .addGap(0, 50, Short.MAX_VALUE)
         );
 
-        jButton1.setText("Equivalent!");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+        getContentPane().add(block2Panel1);
+        block2Panel1.setBounds(150, 200, 250, 50);
+
+        userMessage.setForeground(new java.awt.Color(255, 51, 51));
+        userMessage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(userMessage);
+        userMessage.setBounds(150, 30, 250, 20);
+
+        nosolutionButton.setText("No Solution");
+        nosolutionButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nosolutionButtonActionPerformed(evt);
             }
         });
-
-        scoreLabel.setText("Score :");
-
-        scoreNumberLabel.setText("0");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(147, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(block2Panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(block1Panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(139, 139, 139))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(61, 61, 61))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(scoreLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(scoreNumberLabel)
-                        .addContainerGap())))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(scoreLabel)
-                    .addComponent(scoreNumberLabel))
-                .addGap(48, 48, 48)
-                .addComponent(block1Panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(82, 82, 82)
-                .addComponent(block2Panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(33, 33, 33))
-        );
+        getContentPane().add(nosolutionButton);
+        nosolutionButton.setBounds(480, 320, 87, 23);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -144,9 +135,11 @@ public class BrickGameForm extends javax.swing.JFrame {
        block2Panel1.nextImage();
     }//GEN-LAST:event_block2Panel1MouseClicked
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void equivalentButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_equivalentButtonMouseClicked
       if(block1Panel1.answer == block2Panel1.answer){
           System.out.println("You got it right!");
+          userMessage.setForeground(Color.green);
+          userMessage.setText("Good Job!");
           playMath();
           score++;
           scoreNumberLabel.setText(""+score);
@@ -155,9 +148,30 @@ public class BrickGameForm extends javax.swing.JFrame {
       else{
           System.out.println("Nerd you got it wrong");
           score--;
+          userMessage.setForeground(Color.red);
+          userMessage.setText("Try Again");
           scoreNumberLabel.setText(""+score);
       }
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_equivalentButtonMouseClicked
+
+    private void nosolutionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nosolutionButtonActionPerformed
+        if(block1Panel1.answer != block2Panel1.answer){
+             System.out.println("You got it right!");
+          userMessage.setForeground(Color.green);
+          userMessage.setText("Good Job!");
+          playMath();
+          score++;
+          scoreNumberLabel.setText(""+score);
+          
+      }
+      else{
+          System.out.println("Nerd you got it wrong");
+          score--;
+          userMessage.setForeground(Color.red);
+          userMessage.setText("Try Again");
+          scoreNumberLabel.setText(""+score);
+        }
+    }//GEN-LAST:event_nosolutionButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -219,8 +233,10 @@ public class BrickGameForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private brickgame.Block1Panel block1Panel1;
     private brickgame.Block2Panel block2Panel1;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton equivalentButton;
+    private javax.swing.JButton nosolutionButton;
     private javax.swing.JLabel scoreLabel;
     private javax.swing.JLabel scoreNumberLabel;
+    private javax.swing.JLabel userMessage;
     // End of variables declaration//GEN-END:variables
 }
