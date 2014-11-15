@@ -42,11 +42,15 @@ public class BrickGameForm extends javax.swing.JFrame {
         block2Panel1 = new brickgame.Block2Panel();
         userMessage = new javax.swing.JLabel();
         nosolutionButton = new javax.swing.JButton();
+        numeratorLabel1 = new javax.swing.JLabel();
+        denominatorLabel1 = new javax.swing.JLabel();
+        numeratorLabel2 = new javax.swing.JLabel();
+        denominatorLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(562, 380));
-        setMinimumSize(new java.awt.Dimension(562, 380));
-        setPreferredSize(new java.awt.Dimension(562, 380));
+        setMaximumSize(new java.awt.Dimension(609, 400));
+        setMinimumSize(new java.awt.Dimension(609, 400));
+        setPreferredSize(new java.awt.Dimension(609, 400));
         getContentPane().setLayout(null);
 
         equivalentButton.setText("Equivalent!");
@@ -56,15 +60,15 @@ public class BrickGameForm extends javax.swing.JFrame {
             }
         });
         getContentPane().add(equivalentButton);
-        equivalentButton.setBounds(320, 320, 120, 23);
+        equivalentButton.setBounds(320, 320, 120, 29);
 
         scoreLabel.setText("Score :");
         getContentPane().add(scoreLabel);
-        scoreLabel.setBounds(480, 10, 50, 14);
+        scoreLabel.setBounds(480, 10, 50, 16);
 
         scoreNumberLabel.setText("0");
         getContentPane().add(scoreNumberLabel);
-        scoreNumberLabel.setBounds(523, 11, 50, 14);
+        scoreNumberLabel.setBounds(523, 11, 50, 16);
 
         block1Panel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -118,7 +122,15 @@ public class BrickGameForm extends javax.swing.JFrame {
             }
         });
         getContentPane().add(nosolutionButton);
-        nosolutionButton.setBounds(480, 320, 87, 23);
+        nosolutionButton.setBounds(480, 320, 118, 29);
+        getContentPane().add(numeratorLabel1);
+        numeratorLabel1.setBounds(450, 90, 45, 16);
+        getContentPane().add(denominatorLabel1);
+        denominatorLabel1.setBounds(450, 110, 40, 20);
+        getContentPane().add(numeratorLabel2);
+        numeratorLabel2.setBounds(450, 200, 45, 20);
+        getContentPane().add(denominatorLabel2);
+        denominatorLabel2.setBounds(450, 230, 40, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -129,10 +141,14 @@ public class BrickGameForm extends javax.swing.JFrame {
 
     private void block1Panel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_block1Panel1MouseClicked
        block1Panel1.nextImage();
+       numeratorLabel1.setText(""+block1Panel1.counter);
+       denominatorLabel1.setText(""+(int)block1Panel1.denominator);
     }//GEN-LAST:event_block1Panel1MouseClicked
 
     private void block2Panel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_block2Panel1MouseClicked
        block2Panel1.nextImage();
+       numeratorLabel2.setText(""+block2Panel1.counter);
+       denominatorLabel2.setText(""+(int)block2Panel1.denominator);
     }//GEN-LAST:event_block2Panel1MouseClicked
 
     private void equivalentButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_equivalentButtonMouseClicked
@@ -233,8 +249,12 @@ public class BrickGameForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private brickgame.Block1Panel block1Panel1;
     private brickgame.Block2Panel block2Panel1;
+    private javax.swing.JLabel denominatorLabel1;
+    private javax.swing.JLabel denominatorLabel2;
     private javax.swing.JButton equivalentButton;
     private javax.swing.JButton nosolutionButton;
+    private javax.swing.JLabel numeratorLabel1;
+    private javax.swing.JLabel numeratorLabel2;
     private javax.swing.JLabel scoreLabel;
     private javax.swing.JLabel scoreNumberLabel;
     private javax.swing.JLabel userMessage;

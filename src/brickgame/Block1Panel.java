@@ -46,6 +46,7 @@ public class Block1Panel extends JPanel{
         Image2 = new ImageIcon(getClass().getResource("/resources/2/"+counter+"_2.png"));
         this.repaint();
         answer = (double)counter / (double)denominator;
+       
         
     }
 
