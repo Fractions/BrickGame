@@ -24,6 +24,7 @@ public class BrickGameForm extends javax.swing.JFrame {
     public BrickGameForm() {
         initComponents();
         scoreNumberLabel.setText(""+score);
+        nextButton.setVisible(false);
     }
 
     /**
@@ -46,6 +47,9 @@ public class BrickGameForm extends javax.swing.JFrame {
         denominatorLabel1 = new javax.swing.JLabel();
         numeratorLabel2 = new javax.swing.JLabel();
         denominatorLabel2 = new javax.swing.JLabel();
+        divider1 = new javax.swing.JLabel();
+        divider2 = new javax.swing.JLabel();
+        nextButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(609, 400));
@@ -60,15 +64,15 @@ public class BrickGameForm extends javax.swing.JFrame {
             }
         });
         getContentPane().add(equivalentButton);
-        equivalentButton.setBounds(320, 320, 120, 29);
+        equivalentButton.setBounds(320, 320, 120, 23);
 
         scoreLabel.setText("Score :");
         getContentPane().add(scoreLabel);
-        scoreLabel.setBounds(480, 10, 50, 16);
+        scoreLabel.setBounds(480, 10, 50, 14);
 
         scoreNumberLabel.setText("0");
         getContentPane().add(scoreNumberLabel);
-        scoreNumberLabel.setBounds(523, 11, 50, 16);
+        scoreNumberLabel.setBounds(523, 11, 50, 14);
 
         block1Panel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -122,7 +126,7 @@ public class BrickGameForm extends javax.swing.JFrame {
             }
         });
         getContentPane().add(nosolutionButton);
-        nosolutionButton.setBounds(480, 320, 118, 29);
+        nosolutionButton.setBounds(470, 320, 110, 23);
         getContentPane().add(numeratorLabel1);
         numeratorLabel1.setBounds(450, 90, 45, 16);
         getContentPane().add(denominatorLabel1);
@@ -131,6 +135,18 @@ public class BrickGameForm extends javax.swing.JFrame {
         numeratorLabel2.setBounds(450, 200, 45, 20);
         getContentPane().add(denominatorLabel2);
         denominatorLabel2.setBounds(450, 230, 40, 20);
+
+        divider1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/divider.png"))); // NOI18N
+        getContentPane().add(divider1);
+        divider1.setBounds(440, 100, 34, 14);
+
+        divider2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/divider.png"))); // NOI18N
+        getContentPane().add(divider2);
+        divider2.setBounds(440, 220, 34, 14);
+
+        nextButton.setText("Next Question!");
+        getContentPane().add(nextButton);
+        nextButton.setBounds(460, 320, 120, 23);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -142,13 +158,13 @@ public class BrickGameForm extends javax.swing.JFrame {
     private void block1Panel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_block1Panel1MouseClicked
        block1Panel1.nextImage();
        numeratorLabel1.setText(""+block1Panel1.counter);
-       denominatorLabel1.setText(""+(int)block1Panel1.denominator);
+       denominatorLabel1.setText(""+(int)block1Panel1.randomImageSelect);
     }//GEN-LAST:event_block1Panel1MouseClicked
 
     private void block2Panel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_block2Panel1MouseClicked
        block2Panel1.nextImage();
        numeratorLabel2.setText(""+block2Panel1.counter);
-       denominatorLabel2.setText(""+(int)block2Panel1.denominator);
+       denominatorLabel2.setText(""+(int)block2Panel1.randomImageSelect);
     }//GEN-LAST:event_block2Panel1MouseClicked
 
     private void equivalentButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_equivalentButtonMouseClicked
@@ -159,6 +175,9 @@ public class BrickGameForm extends javax.swing.JFrame {
           playMath();
           score++;
           scoreNumberLabel.setText(""+score);
+          equivalentButton.setVisible(false);
+          nosolutionButton.setVisible(false);
+          nextButton.setVisible(true);
           
       }
       else{
@@ -172,7 +191,6 @@ public class BrickGameForm extends javax.swing.JFrame {
 
     private void nosolutionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nosolutionButtonActionPerformed
         if(block1Panel1.answer != block2Panel1.answer){
-             System.out.println("You got it right!");
           userMessage.setForeground(Color.green);
           userMessage.setText("Good Job!");
           playMath();
@@ -181,7 +199,6 @@ public class BrickGameForm extends javax.swing.JFrame {
           
       }
       else{
-          System.out.println("Nerd you got it wrong");
           score--;
           userMessage.setForeground(Color.red);
           userMessage.setText("Try Again");
@@ -251,7 +268,10 @@ public class BrickGameForm extends javax.swing.JFrame {
     private brickgame.Block2Panel block2Panel1;
     private javax.swing.JLabel denominatorLabel1;
     private javax.swing.JLabel denominatorLabel2;
+    private javax.swing.JLabel divider1;
+    private javax.swing.JLabel divider2;
     private javax.swing.JButton equivalentButton;
+    private javax.swing.JButton nextButton;
     private javax.swing.JButton nosolutionButton;
     private javax.swing.JLabel numeratorLabel1;
     private javax.swing.JLabel numeratorLabel2;

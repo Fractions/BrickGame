@@ -6,6 +6,7 @@
 package brickgame;
 
 import java.awt.Graphics;
+import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
@@ -15,17 +16,19 @@ import javax.swing.JPanel;
  */
 public class Block2Panel extends JPanel{
     
-     ImageIcon Image6;
+     ImageIcon Image;
     int counter = 0;
-    double denominator = 6;
     double answer = 0;
+    Random gen = new Random();
+    int randomImageSelect = gen.nextInt(2)+2;
     
    
     
     public Block2Panel(){
     
+    
     try{
-    Image6 = new ImageIcon(getClass().getResource("/resources/6/0_6.png"));
+    Image = new ImageIcon(getClass().getResource("/resources/"+randomImageSelect+"/0_"+randomImageSelect+".png"));
     
     }
     catch(Exception e){
@@ -38,15 +41,15 @@ public class Block2Panel extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g); //To change body of generated methods, choose Tools | Templates.
-        g.drawImage(Image6.getImage(), 0, 0, null);
+        g.drawImage(Image.getImage(), 0, 0, null);
        
     }
     
     public void nextImage(){
         counter++;
-        Image6 = new ImageIcon(getClass().getResource("/resources/6/"+counter+"_6.png"));
+        Image = new ImageIcon(getClass().getResource("/resources/"+randomImageSelect+"/"+counter+"_"+randomImageSelect+".png"));
         this.repaint();
-        answer = (double)counter / (double)denominator;
+        answer = (double)counter / (double)randomImageSelect;
     }
     
 }
