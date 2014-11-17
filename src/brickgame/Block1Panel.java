@@ -21,12 +21,13 @@ public class Block1Panel extends JPanel{
     double answer = 0;
     Random gen = new Random();
     int randomImageSelect = gen.nextInt(2)+2;
+    int randomNumerator = gen.nextInt(randomImageSelect)+2;
     
     public Block1Panel(){
      
     
     try{
-    Image = new ImageIcon(getClass().getResource("/resources/"+randomImageSelect+"/0_"+randomImageSelect+".png"));
+    Image = new ImageIcon(getClass().getResource("/resources/"+randomImageSelect+"/"+randomNumerator+"_"+randomImageSelect+".png"));
     
     }
     catch(Exception e){
@@ -44,9 +45,9 @@ public class Block1Panel extends JPanel{
     }
     
     public void nextImage(){
-        counter++;
-        Image = new ImageIcon(getClass().getResource("/resources/"+randomImageSelect+"/"+counter+"_"+randomImageSelect+".png"));
-        this.repaint();
+//        counter++;
+//        Image = new ImageIcon(getClass().getResource("/resources/"+randomImageSelect+"/"+counter+"_"+randomImageSelect+".png"));
+//        this.repaint();
         answer = (double)counter / (double)randomImageSelect;
        
         
