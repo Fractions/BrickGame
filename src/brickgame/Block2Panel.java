@@ -52,4 +52,20 @@ public class Block2Panel extends JPanel{
         answer = (double)counter / (double)randomImageSelect;
     }
     
+    public void reset(){
+    answer = 0;
+    counter = 0;
+    randomImageSelect = gen.nextInt(2)+2;
+        
+        try{
+    Image = new ImageIcon(getClass().getResource("/resources/"+randomImageSelect+"/0_"+randomImageSelect+".png"));
+    
+    }
+    catch(Exception e){
+    e.printStackTrace();
+              }
+        
+        
+    }
+    
 }

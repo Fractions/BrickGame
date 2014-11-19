@@ -25,6 +25,12 @@ public class BrickGameForm extends javax.swing.JFrame {
         initComponents();
         scoreNumberLabel.setText(""+score);
         nextButton.setVisible(false);
+        block1Panel1.nextImage();
+        numeratorLabel1.setText(""+block1Panel1.randomNumerator);
+        denominatorLabel1.setText(""+(int)block1Panel1.randomImageSelect); 
+        
+        
+        
     }
 
     /**
@@ -42,7 +48,6 @@ public class BrickGameForm extends javax.swing.JFrame {
         block1Panel1 = new brickgame.Block1Panel();
         block2Panel1 = new brickgame.Block2Panel();
         userMessage = new javax.swing.JLabel();
-        nosolutionButton = new javax.swing.JButton();
         numeratorLabel1 = new javax.swing.JLabel();
         denominatorLabel1 = new javax.swing.JLabel();
         numeratorLabel2 = new javax.swing.JLabel();
@@ -64,15 +69,15 @@ public class BrickGameForm extends javax.swing.JFrame {
             }
         });
         getContentPane().add(equivalentButton);
-        equivalentButton.setBounds(320, 320, 120, 23);
+        equivalentButton.setBounds(460, 320, 120, 29);
 
         scoreLabel.setText("Score :");
         getContentPane().add(scoreLabel);
-        scoreLabel.setBounds(480, 10, 50, 14);
+        scoreLabel.setBounds(480, 10, 50, 16);
 
         scoreNumberLabel.setText("0");
         getContentPane().add(scoreNumberLabel);
-        scoreNumberLabel.setBounds(523, 11, 50, 14);
+        scoreNumberLabel.setBounds(523, 11, 50, 16);
 
         block1Panel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -118,15 +123,6 @@ public class BrickGameForm extends javax.swing.JFrame {
         userMessage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(userMessage);
         userMessage.setBounds(150, 30, 250, 20);
-
-        nosolutionButton.setText("No Solution");
-        nosolutionButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nosolutionButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(nosolutionButton);
-        nosolutionButton.setBounds(470, 320, 110, 23);
         getContentPane().add(numeratorLabel1);
         numeratorLabel1.setBounds(450, 90, 45, 16);
         getContentPane().add(denominatorLabel1);
@@ -145,8 +141,13 @@ public class BrickGameForm extends javax.swing.JFrame {
         divider2.setBounds(440, 220, 34, 14);
 
         nextButton.setText("Next Question!");
+        nextButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(nextButton);
-        nextButton.setBounds(460, 320, 120, 23);
+        nextButton.setBounds(460, 320, 120, 29);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -172,11 +173,10 @@ public class BrickGameForm extends javax.swing.JFrame {
           System.out.println("You got it right!");
           userMessage.setForeground(Color.green);
           userMessage.setText("Good Job!");
-          playMath();
+          //playMath();
           score++;
           scoreNumberLabel.setText(""+score);
           equivalentButton.setVisible(false);
-          nosolutionButton.setVisible(false);
           nextButton.setVisible(true);
           
       }
@@ -189,22 +189,15 @@ public class BrickGameForm extends javax.swing.JFrame {
       }
     }//GEN-LAST:event_equivalentButtonMouseClicked
 
-    private void nosolutionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nosolutionButtonActionPerformed
-        if(block1Panel1.answer != block2Panel1.answer){
-          userMessage.setForeground(Color.green);
-          userMessage.setText("Good Job!");
-          playMath();
-          score++;
-          scoreNumberLabel.setText(""+score);
-          
-      }
-      else{
-          score--;
-          userMessage.setForeground(Color.red);
-          userMessage.setText("Try Again");
-          scoreNumberLabel.setText(""+score);
-        }
-    }//GEN-LAST:event_nosolutionButtonActionPerformed
+    private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
+        userMessage.setText("");
+        
+        block1Panel1.nextImage();
+        numeratorLabel1.setText(""+block1Panel1.randomNumerator);
+        denominatorLabel1.setText(""+(int)block1Panel1.randomImageSelect);
+        
+        block2Panel1.reset();
+    }//GEN-LAST:event_nextButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -272,7 +265,6 @@ public class BrickGameForm extends javax.swing.JFrame {
     private javax.swing.JLabel divider2;
     private javax.swing.JButton equivalentButton;
     private javax.swing.JButton nextButton;
-    private javax.swing.JButton nosolutionButton;
     private javax.swing.JLabel numeratorLabel1;
     private javax.swing.JLabel numeratorLabel2;
     private javax.swing.JLabel scoreLabel;
