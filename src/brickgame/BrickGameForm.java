@@ -193,6 +193,10 @@ public class BrickGameForm extends javax.swing.JFrame {
         userMessage.setText("");
         
         block1Panel1.nextImage();
+        
+        block1Panel1.randomImageSelect = block1Panel1.gen.nextInt(2)+2;
+        block1Panel1.randomNumerator = block1Panel1.gen.nextInt(block1Panel1.randomImageSelect)+1;
+        
         numeratorLabel1.setText(""+block1Panel1.randomNumerator);
         denominatorLabel1.setText(""+(int)block1Panel1.randomImageSelect);
         
