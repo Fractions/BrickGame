@@ -25,9 +25,18 @@ public class BrickGameForm extends javax.swing.JFrame {
         initComponents();
         scoreNumberLabel.setText(""+score);
         nextButton.setVisible(false);
-        block1Panel1.nextImage();
+        newGameButton.setVisible(false);
+        
         numeratorLabel1.setText(""+block1Panel1.randomNumerator);
         denominatorLabel1.setText(""+(int)block1Panel1.randomImageSelect); 
+        
+        while((block2Panel1.randomImageSelect % block1Panel1.randomImageSelect) != 0){
+            block1Panel1.newQuestion();
+            block2Panel1.reset();
+            
+            numeratorLabel1.setText(""+block1Panel1.randomNumerator);
+            denominatorLabel1.setText(""+(int)block1Panel1.randomImageSelect);
+        }
         
         
         
@@ -55,6 +64,9 @@ public class BrickGameForm extends javax.swing.JFrame {
         divider1 = new javax.swing.JLabel();
         divider2 = new javax.swing.JLabel();
         nextButton = new javax.swing.JButton();
+        minusButton = new javax.swing.JLabel();
+        plusButton = new javax.swing.JLabel();
+        newGameButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(609, 400));
@@ -69,7 +81,7 @@ public class BrickGameForm extends javax.swing.JFrame {
             }
         });
         getContentPane().add(equivalentButton);
-        equivalentButton.setBounds(460, 320, 120, 29);
+        equivalentButton.setBounds(470, 320, 120, 29);
 
         scoreLabel.setText("Score :");
         getContentPane().add(scoreLabel);
@@ -147,7 +159,34 @@ public class BrickGameForm extends javax.swing.JFrame {
             }
         });
         getContentPane().add(nextButton);
-        nextButton.setBounds(460, 320, 120, 29);
+        nextButton.setBounds(470, 320, 120, 29);
+
+        minusButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/minus.png"))); // NOI18N
+        minusButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                minusButtonMouseClicked(evt);
+            }
+        });
+        getContentPane().add(minusButton);
+        minusButton.setBounds(100, 220, 45, 16);
+
+        plusButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/plus.png"))); // NOI18N
+        plusButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                plusButtonMouseClicked(evt);
+            }
+        });
+        getContentPane().add(plusButton);
+        plusButton.setBounds(40, 210, 40, 40);
+
+        newGameButton.setText("New Game");
+        newGameButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newGameButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(newGameButton);
+        newGameButton.setBounds(470, 320, 110, 29);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -157,9 +196,7 @@ public class BrickGameForm extends javax.swing.JFrame {
     }//GEN-LAST:event_block1Panel1KeyPressed
 
     private void block1Panel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_block1Panel1MouseClicked
-       block1Panel1.nextImage();
-       numeratorLabel1.setText(""+block1Panel1.counter);
-       denominatorLabel1.setText(""+(int)block1Panel1.randomImageSelect);
+
     }//GEN-LAST:event_block1Panel1MouseClicked
 
     private void block2Panel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_block2Panel1MouseClicked
@@ -178,6 +215,12 @@ public class BrickGameForm extends javax.swing.JFrame {
           scoreNumberLabel.setText(""+score);
           equivalentButton.setVisible(false);
           nextButton.setVisible(true);
+          if(score == 10){
+              userMessage.setText("YOU WIN!");
+              nextButton.setVisible(false);
+              newGameButton.setVisible(true);
+          }
+          
           
       }
       else{
@@ -191,17 +234,64 @@ public class BrickGameForm extends javax.swing.JFrame {
 
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
         userMessage.setText("");
+        nextButton.setVisible(false);
+        equivalentButton.setVisible(true);
         
-        block1Panel1.nextImage();
-        
-        block1Panel1.randomImageSelect = block1Panel1.gen.nextInt(2)+2;
-        block1Panel1.randomNumerator = block1Panel1.gen.nextInt(block1Panel1.randomImageSelect)+1;
+        block1Panel1.newQuestion();
         
         numeratorLabel1.setText(""+block1Panel1.randomNumerator);
         denominatorLabel1.setText(""+(int)block1Panel1.randomImageSelect);
         
         block2Panel1.reset();
+        numeratorLabel2.setText(""+block2Panel1.counter);
+        denominatorLabel2.setText(""+(int)block2Panel1.randomImageSelect);
+        
+        while((block2Panel1.randomImageSelect % block1Panel1.randomImageSelect) != 0){
+            block1Panel1.newQuestion();
+            block2Panel1.reset();
+            
+            numeratorLabel1.setText(""+block1Panel1.randomNumerator);
+            denominatorLabel1.setText(""+(int)block1Panel1.randomImageSelect);
+        }
+        
+        
     }//GEN-LAST:event_nextButtonActionPerformed
+
+    private void plusButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_plusButtonMouseClicked
+       block2Panel1.nextImage();
+       numeratorLabel2.setText(""+block2Panel1.counter);
+       denominatorLabel2.setText(""+(int)block2Panel1.randomImageSelect);
+    }//GEN-LAST:event_plusButtonMouseClicked
+
+    private void minusButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minusButtonMouseClicked
+       block2Panel1.previousImage();
+       numeratorLabel2.setText(""+block2Panel1.counter);
+       denominatorLabel2.setText(""+(int)block2Panel1.randomImageSelect);
+    }//GEN-LAST:event_minusButtonMouseClicked
+
+    private void newGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newGameButtonActionPerformed
+        score = 0;
+        scoreNumberLabel.setText(""+score);
+        nextButton.setVisible(false);
+        newGameButton.setVisible(false);
+        
+        block1Panel1.newQuestion();
+        
+        numeratorLabel1.setText(""+block1Panel1.randomNumerator);
+        denominatorLabel1.setText(""+(int)block1Panel1.randomImageSelect);
+        
+        block2Panel1.reset();
+        numeratorLabel2.setText(""+block2Panel1.counter);
+        denominatorLabel2.setText(""+(int)block2Panel1.randomImageSelect);
+        
+        while((block2Panel1.randomImageSelect % block1Panel1.randomImageSelect) != 0){
+            block1Panel1.newQuestion();
+            block2Panel1.reset();
+            
+            numeratorLabel1.setText(""+block1Panel1.randomNumerator);
+            denominatorLabel1.setText(""+(int)block1Panel1.randomImageSelect);
+        }
+    }//GEN-LAST:event_newGameButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -268,9 +358,12 @@ public class BrickGameForm extends javax.swing.JFrame {
     private javax.swing.JLabel divider1;
     private javax.swing.JLabel divider2;
     private javax.swing.JButton equivalentButton;
+    private javax.swing.JLabel minusButton;
+    private javax.swing.JButton newGameButton;
     private javax.swing.JButton nextButton;
     private javax.swing.JLabel numeratorLabel1;
     private javax.swing.JLabel numeratorLabel2;
+    private javax.swing.JLabel plusButton;
     private javax.swing.JLabel scoreLabel;
     private javax.swing.JLabel scoreNumberLabel;
     private javax.swing.JLabel userMessage;
