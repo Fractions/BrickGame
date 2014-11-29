@@ -82,14 +82,15 @@ public class BrickGameForm extends javax.swing.JFrame {
         });
         getContentPane().add(equivalentButton);
         equivalentButton.setBounds(470, 320, 120, 23);
+        equivalentButton.setBounds(470, 320, 120, 29);
 
         scoreLabel.setText("Score :");
         getContentPane().add(scoreLabel);
-        scoreLabel.setBounds(480, 10, 50, 14);
+        scoreLabel.setBounds(480, 10, 50, 16);
 
         scoreNumberLabel.setText("0");
         getContentPane().add(scoreNumberLabel);
-        scoreNumberLabel.setBounds(523, 11, 50, 14);
+        scoreNumberLabel.setBounds(523, 11, 50, 16);
 
         block1Panel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -160,6 +161,7 @@ public class BrickGameForm extends javax.swing.JFrame {
         });
         getContentPane().add(nextButton);
         nextButton.setBounds(470, 320, 120, 23);
+        nextButton.setBounds(470, 320, 120, 29);
 
         minusButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/minus.png"))); // NOI18N
         minusButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -187,7 +189,8 @@ public class BrickGameForm extends javax.swing.JFrame {
         });
         getContentPane().add(newGameButton);
         newGameButton.setBounds(470, 320, 110, 23);
-
+        newGameButton.setBounds(470, 320, 110, 29);
+        
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
