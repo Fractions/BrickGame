@@ -51,6 +51,7 @@ public class BrickGameForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        splashscreen = new javax.swing.JLabel();
         equivalentButton = new javax.swing.JButton();
         scoreLabel = new javax.swing.JLabel();
         scoreNumberLabel = new javax.swing.JLabel();
@@ -67,12 +68,22 @@ public class BrickGameForm extends javax.swing.JFrame {
         minusButton = new javax.swing.JLabel();
         plusButton = new javax.swing.JLabel();
         newGameButton = new javax.swing.JButton();
+        background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(609, 400));
         setMinimumSize(new java.awt.Dimension(609, 400));
         setPreferredSize(new java.awt.Dimension(609, 400));
         getContentPane().setLayout(null);
+
+        splashscreen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/splash.png"))); // NOI18N
+        splashscreen.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                splashscreenMouseClicked(evt);
+            }
+        });
+        getContentPane().add(splashscreen);
+        splashscreen.setBounds(-6, -6, 610, 410);
 
         equivalentButton.setText("Equivalent!");
         equivalentButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -82,15 +93,14 @@ public class BrickGameForm extends javax.swing.JFrame {
         });
         getContentPane().add(equivalentButton);
         equivalentButton.setBounds(470, 320, 120, 23);
-        equivalentButton.setBounds(470, 320, 120, 29);
 
         scoreLabel.setText("Score :");
         getContentPane().add(scoreLabel);
-        scoreLabel.setBounds(480, 10, 50, 16);
+        scoreLabel.setBounds(480, 10, 50, 14);
 
         scoreNumberLabel.setText("0");
         getContentPane().add(scoreNumberLabel);
-        scoreNumberLabel.setBounds(523, 11, 50, 16);
+        scoreNumberLabel.setBounds(523, 11, 50, 14);
 
         block1Panel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -132,10 +142,11 @@ public class BrickGameForm extends javax.swing.JFrame {
         getContentPane().add(block2Panel1);
         block2Panel1.setBounds(150, 200, 250, 50);
 
-        userMessage.setForeground(new java.awt.Color(255, 51, 51));
+        userMessage.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        userMessage.setForeground(new java.awt.Color(0, 0, 204));
         userMessage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(userMessage);
-        userMessage.setBounds(150, 30, 250, 20);
+        userMessage.setBounds(140, 20, 280, 40);
         getContentPane().add(numeratorLabel1);
         numeratorLabel1.setBounds(450, 90, 45, 16);
         getContentPane().add(denominatorLabel1);
@@ -161,7 +172,6 @@ public class BrickGameForm extends javax.swing.JFrame {
         });
         getContentPane().add(nextButton);
         nextButton.setBounds(470, 320, 120, 23);
-        nextButton.setBounds(470, 320, 120, 29);
 
         minusButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/minus.png"))); // NOI18N
         minusButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -189,8 +199,11 @@ public class BrickGameForm extends javax.swing.JFrame {
         });
         getContentPane().add(newGameButton);
         newGameButton.setBounds(470, 320, 110, 23);
-        newGameButton.setBounds(470, 320, 110, 29);
-        
+
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/background.png"))); // NOI18N
+        getContentPane().add(background);
+        background.setBounds(-6, -6, 620, 410);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -296,6 +309,10 @@ public class BrickGameForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_newGameButtonActionPerformed
 
+    private void splashscreenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_splashscreenMouseClicked
+        splashscreen.setVisible(false);
+    }//GEN-LAST:event_splashscreenMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -354,6 +371,7 @@ public class BrickGameForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel background;
     private brickgame.Block1Panel block1Panel1;
     private brickgame.Block2Panel block2Panel1;
     private javax.swing.JLabel denominatorLabel1;
@@ -369,6 +387,7 @@ public class BrickGameForm extends javax.swing.JFrame {
     private javax.swing.JLabel plusButton;
     private javax.swing.JLabel scoreLabel;
     private javax.swing.JLabel scoreNumberLabel;
+    private javax.swing.JLabel splashscreen;
     private javax.swing.JLabel userMessage;
     // End of variables declaration//GEN-END:variables
 }
