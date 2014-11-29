@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package brickgame;
 
 import java.awt.Graphics;
@@ -20,7 +16,7 @@ public class Block1Panel extends JPanel{
     int counter = 0;
     double answer = 0;
     Random gen = new Random();
-    int randomImageSelect = gen.nextInt(2)+2;
+    int randomImageSelect = gen.nextInt(8)+2;
     int randomNumerator = gen.nextInt(randomImageSelect)+1;
     
     public Block1Panel(){
@@ -36,22 +32,28 @@ public class Block1Panel extends JPanel{
     answer = (double)randomNumerator / (double)randomImageSelect;
         }
     
-    
-
     @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g); //To change body of generated methods, choose Tools | Templates.
-        g.drawImage(Image.getImage(), 0, 0, null);
-       
-    }
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g); //To change body of generated methods, choose Tools | Templates.
+            g.drawImage(Image.getImage(), 0, 0, null);
+
+        }
     
-    public void nextImage(){
-//        counter++;
-//        Image = new ImageIcon(getClass().getResource("/resources/"+randomImageSelect+"/"+counter+"_"+randomImageSelect+".png"));
-//        this.repaint();
+    public void newQuestion(){
+        randomImageSelect = gen.nextInt(8)+2;
+        randomNumerator = gen.nextInt(randomImageSelect)+1;
         
-       
-        
+        try{
+           Image = new ImageIcon(getClass().getResource("/resources/"+randomImageSelect+"/"+randomNumerator+"_"+randomImageSelect+".png"));
+    
+           }
+             catch(Exception e){
+             e.printStackTrace();
+           }
+               answer = (double)randomNumerator / (double)randomImageSelect;
+               this.repaint();
+        }
+
     }
 
-}
+

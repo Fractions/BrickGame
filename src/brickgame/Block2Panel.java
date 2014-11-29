@@ -20,7 +20,7 @@ public class Block2Panel extends JPanel{
     int counter = 0;
     double answer = 0;
     Random gen = new Random();
-    int randomImageSelect = gen.nextInt(2)+2;
+    int randomImageSelect = gen.nextInt(8)+2;
     
    
     
@@ -47,6 +47,19 @@ public class Block2Panel extends JPanel{
     
     public void nextImage(){
         counter++;
+        if(counter > randomImageSelect){
+            System.out.println("No more images");
+        }
+        Image = new ImageIcon(getClass().getResource("/resources/"+randomImageSelect+"/"+counter+"_"+randomImageSelect+".png"));
+        this.repaint();
+        answer = (double)counter / (double)randomImageSelect;
+    }
+    
+    public void previousImage(){
+        counter--;
+        if(counter > randomImageSelect){
+            System.out.println("No more images");
+        }
         Image = new ImageIcon(getClass().getResource("/resources/"+randomImageSelect+"/"+counter+"_"+randomImageSelect+".png"));
         this.repaint();
         answer = (double)counter / (double)randomImageSelect;
@@ -55,16 +68,16 @@ public class Block2Panel extends JPanel{
     public void reset(){
     answer = 0;
     counter = 0;
-    randomImageSelect = gen.nextInt(2)+2;
+    randomImageSelect = gen.nextInt(8)+2;
         
-        try{
+    try{
     Image = new ImageIcon(getClass().getResource("/resources/"+randomImageSelect+"/0_"+randomImageSelect+".png"));
     
     }
     catch(Exception e){
     e.printStackTrace();
               }
-        
+    this.repaint();
         
     }
     
