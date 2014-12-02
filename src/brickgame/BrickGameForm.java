@@ -231,9 +231,14 @@ public class BrickGameForm extends javax.swing.JFrame {
     }//GEN-LAST:event_block1Panel1MouseClicked
 
     private void block2Panel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_block2Panel1MouseClicked
+       if(block2Panel1.counter >= block2Panel1.randomImageSelect){
+          block2Panel1.counter = block2Panel1.randomImageSelect;
+       }
+       else{
        block2Panel1.nextImage();
        numeratorLabel2.setText(""+block2Panel1.counter);
        denominatorLabel2.setText(""+(int)block2Panel1.randomImageSelect);
+       }
     }//GEN-LAST:event_block2Panel1MouseClicked
 
     private void equivalentButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_equivalentButtonMouseClicked
@@ -326,6 +331,7 @@ public class BrickGameForm extends javax.swing.JFrame {
         nextButton.setVisible(false);
         newGameButton.setVisible(false);
         thumbsLion.setVisible(false);
+        equivalentButton.setVisible(true);
         
         block1Panel1.newQuestion();
         

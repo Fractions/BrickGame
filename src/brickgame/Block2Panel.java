@@ -47,22 +47,26 @@ public class Block2Panel extends JPanel{
     
     public void nextImage(){
         counter++;
-        if(counter > randomImageSelect){
-            System.out.println("No more images");
+        if(counter >= randomImageSelect){
+            counter = randomImageSelect;
         }
+        
         Image = new ImageIcon(getClass().getResource("/resources/"+randomImageSelect+"/"+counter+"_"+randomImageSelect+".png"));
         this.repaint();
         answer = (double)counter / (double)randomImageSelect;
+        
     }
     
     public void previousImage(){
         counter--;
-        if(counter > randomImageSelect){
-            System.out.println("No more images");
+        if(counter >= randomImageSelect){
+            counter = randomImageSelect;
         }
+        
         Image = new ImageIcon(getClass().getResource("/resources/"+randomImageSelect+"/"+counter+"_"+randomImageSelect+".png"));
         this.repaint();
         answer = (double)counter / (double)randomImageSelect;
+        
     }
     
     public void reset(){
