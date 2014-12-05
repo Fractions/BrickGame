@@ -277,7 +277,6 @@ public class BrickGameForm extends javax.swing.JFrame {
       }
       else{
           System.out.println("Nerd you got it wrong");
-          score--;
           userMessage.setForeground(Color.red);
           userMessage.setText("Try Again");
           scoreNumberLabel.setText(""+score);
