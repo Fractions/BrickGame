@@ -7,6 +7,8 @@ package brickgame;
 import java.awt.Color;
 import java.io.*;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.*;
 
@@ -23,9 +25,18 @@ public class BrickGameForm extends javax.swing.JFrame {
     int score = 5;
     String filePath; 
     Random gen = new Random();
+    String currentPath;
     
     public BrickGameForm() {
         initComponents();
+        
+        File currentDirectory = new File(new File(".").getAbsolutePath());
+          try {
+               currentPath = currentDirectory.getCanonicalPath();
+          } catch (IOException ex) {
+              Logger.getLogger(BrickGameForm.class.getName()).log(Level.SEVERE, null, ex);
+          }
+        
         scoreNumberLabel.setText(""+score);
         nextButton.setVisible(false);
         newGameButton.setVisible(false);
@@ -247,18 +258,20 @@ public class BrickGameForm extends javax.swing.JFrame {
           userMessage.setForeground(Color.green);
           userMessage.setText("Good Job!");
           
+          
+          
           int clip = gen.nextInt(4);
           if(clip == 0){
-              filePath = "/resources/math.mp3";
+              filePath = currentPath+"/src/resources/math.mp3";
           }
           if(clip == 1){
-              filePath = "/resources/woohoo.mp3";  
+              filePath = currentPath+"/src/resources/woohoo.mp3";  
           }
           if(clip == 2){
-              filePath = "/resources/yay.mp3";  
+              filePath = currentPath+"/src/resources/yay.mp3";  
           }
           if(clip == 3){
-              filePath = "/resources/cheer.mp3";  
+              filePath = currentPath+"/src/resources/cheer.mp3";  
           }
           playClip();
           
@@ -315,12 +328,18 @@ public class BrickGameForm extends javax.swing.JFrame {
        block2Panel1.nextImage();
        numeratorLabel2.setText(""+block2Panel1.counter);
        denominatorLabel2.setText(""+(int)block2Panel1.randomImageSelect);
+       
+       filePath = currentPath+"/src/resources/pop.mp3";
+       playClip();
     }//GEN-LAST:event_plusButtonMouseClicked
 
     private void minusButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minusButtonMouseClicked
        block2Panel1.previousImage();
        numeratorLabel2.setText(""+block2Panel1.counter);
        denominatorLabel2.setText(""+(int)block2Panel1.randomImageSelect);
+       
+       filePath = currentPath+"/src/resources/pop.mp3";
+       playClip();
     }//GEN-LAST:event_minusButtonMouseClicked
 
     private void newGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newGameButtonActionPerformed
@@ -391,6 +410,8 @@ public class BrickGameForm extends javax.swing.JFrame {
         
     }
     public void playClip(){
+  
+       
         try{
           File file = new File(filePath);
           FileInputStream fis = new FileInputStream(file);
