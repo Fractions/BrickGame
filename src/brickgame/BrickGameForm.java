@@ -249,16 +249,16 @@ public class BrickGameForm extends javax.swing.JFrame {
           
           int clip = gen.nextInt(4);
           if(clip == 0){
-              filePath = "/Users/brandonturner/GitHub/BrickGame/src/resources/math.mp3";
+              filePath = "/resources/math.mp3";
           }
           if(clip == 1){
-              filePath = "/Users/brandonturner/GitHub/BrickGame/src/resources/woohoo.mp3";  
+              filePath = "/resources/woohoo.mp3";  
           }
           if(clip == 2){
-              filePath = "/Users/brandonturner/GitHub/BrickGame/src/resources/yay.mp3";  
+              filePath = "/resources/yay.mp3";  
           }
           if(clip == 3){
-              filePath = "/Users/brandonturner/GitHub/BrickGame/src/resources/cheer.mp3";  
+              filePath = "/resources/cheer.mp3";  
           }
           playClip();
           
