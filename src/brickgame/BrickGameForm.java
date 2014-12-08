@@ -9,6 +9,10 @@ import java.io.*;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.*;
 
@@ -29,6 +33,8 @@ public class BrickGameForm extends javax.swing.JFrame {
     
     public BrickGameForm() {
         initComponents();
+        
+        
         
         File currentDirectory = new File(new File(".").getAbsolutePath());
           try {
@@ -88,6 +94,7 @@ public class BrickGameForm extends javax.swing.JFrame {
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Brick Game");
         setMinimumSize(new java.awt.Dimension(609, 400));
         setSize(new java.awt.Dimension(590, 400));
         getContentPane().setLayout(null);
@@ -431,6 +438,8 @@ public class BrickGameForm extends javax.swing.JFrame {
         }
             
     }
+    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backButton;
