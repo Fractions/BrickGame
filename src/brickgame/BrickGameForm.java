@@ -84,7 +84,7 @@ public class BrickGameForm extends javax.swing.JFrame {
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Brick Game");
+        setTitle("Fraction Interaction");
         setMinimumSize(new java.awt.Dimension(609, 400));
         setSize(new java.awt.Dimension(590, 400));
         getContentPane().setLayout(null);
